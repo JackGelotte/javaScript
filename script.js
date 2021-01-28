@@ -43,7 +43,8 @@ let addArticle = () => {
     Jag steppa igenom koden och fann felet. Jag försökte "fästa" ett event på en knapp som inte fanns.
     Testade med lite olika saker tills felmeddelandet ändrades. Nu fick jag "Cannot access removeArticle before initialization".
     Det felet förstod jag. Då var det vara flytta runt koden lite.
-     */
+    */
+
 
     // Tar bort artikeln
     newDeleteBtn.onclick = ()=>{ newDeleteBtn.parentNode.remove() };

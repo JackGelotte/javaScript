@@ -91,7 +91,7 @@ html {
   justify-content: center;
   align-items: center;
   text-align: center;
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.8)) ,url(/images/myHero.jpg);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5),rgba(0, 0, 0, 0.8)) ,url(images/myHero.jpg);
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
