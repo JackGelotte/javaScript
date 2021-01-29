@@ -123,6 +123,7 @@ html {
 /* blog-page */
 .blog {
   min-height: 100vh;
+  padding-top: 80px;
 }
 .blog__addBtn {
   width: 140px;
