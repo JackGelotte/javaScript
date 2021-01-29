@@ -1,17 +1,29 @@
 "use strict";
 
+// Jag använder "use strict" för att få tydliga errors när jag skriver något knas.
 
 let newPostBtn = document.querySelector('.blog__addBtn');
 
+
 /*
-Debug
-När jag skapade "addArticle" funktionen så märkte jag att den lade till den nya ner i body.
-Jag hade missat att specificera att artikeln skulle ligga i blogContainer. .prepend löste det.
-Sedan fick jag inte med mig allt som skulle finnas inne i artikeln, men testade samma metod.
-Append fungerade fint till det.
+Debugging addArticle()
+-----------------------------------------------------
+När jag skapade "addArticle" funktionen så hamnade den nya <article> under allting annat på sidan.
+Jag testade att skriva koden inne i console på webbläsaren och såg då att det är för att den lades till i body.
+Jag hade missat att specificera att artikeln skulle ligga inuti blogContainer. 
+
 */
 
-// Lägger till ny blog post
+/* 
+addArticle()
+-----------------------------------------------------
+När man trycker på "New Entry"-knappen så sker följande:
+Skapar en ny <article> och tilldelar klassnamn.
+Skapar dessutom <h1> och <p> som sedan läggs inuti den nya article.
+Lägger också till en knapp, som kan ta bort article.
+
+*/
+// funktion för ny blog-post
 let addArticle = () => {
 
     // Skapar <article>
@@ -20,7 +32,7 @@ let addArticle = () => {
     newPost.className = 'blog__post';
     blogContainer.prepend(newPost);
 
-    // Skapar <h1> och <p> till article
+    // Skapar <h1> och <p> till article, samt knapp för att ta bort blog-post
     let newTitle = document.createElement('h1');
     let newText = document.createElement('p');
     let newDeleteBtn = document.createElement('button');
@@ -36,18 +48,21 @@ let addArticle = () => {
     newPost.appendChild(newText);
     newPost.appendChild(newDeleteBtn);
 
-    /*
-    Debug ".addEventListener is not a function"
+    
+    /* 
+    Debugging ".addEventListener is not a function"
+    -----------------------------------------------------
     Här ville inte den inte låta knappen (blog__deleteBtn) få funktionen att ta bort sin parent.
     Alltså ta bort posten som knappen ligger inuti.
-    Jag steppa igenom koden och fann felet. Jag försökte "fästa" ett event på en knapp som inte fanns.
-    Testade med lite olika saker tills felmeddelandet ändrades. Nu fick jag "Cannot access removeArticle before initialization".
-    Det felet förstod jag. Då var det vara flytta runt koden lite.
+    Jag fick sätta breakpoints och steppa igenom. Felet var att jag försökte "fästa" ett event på en knapp som inte hade skapat än.
+    Jag skrev om koden lite, för att se till så att knappen skapades först.
     */
 
 
-    // Tar bort artikeln
+    // Jag lägger till en onclick function på knappen som skapas i varje ny post. Som tar bort knappens parent.
+    // Tar bort blog-post.
     newDeleteBtn.onclick = ()=>{ newDeleteBtn.parentNode.remove() };
 }
 
+// Event för "New Entry"-knappen
 newPostBtn.addEventListener('click', addArticle);

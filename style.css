@@ -26,7 +26,6 @@ html {
   font-size: 1.2rem;
   position: sticky;
   top: 0;
-  z-index: 999;
 }
 
 .navbar__container {
@@ -122,7 +121,9 @@ html {
 /* home-page end */
 
 /* blog-page */
-
+.blog {
+  min-height: 100vh;
+}
 .blog__addBtn {
   width: 140px;
   height: 70px;
